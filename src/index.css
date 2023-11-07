@@ -1,5 +1,9 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@font-face {
+  font-family: 'AdigianaUI';
+  src: url('../src/fonts/AdigianaUI.ttf') format('opentype');
+}
 
 *{
   margin: 0 auto;
@@ -19,7 +23,11 @@ html {
   --optional-color: #C27BBE;
 
   --text-color: #6E4139;
+  --text-color-light: #fff;
   --body-font: "Poppins", sans-serif;
+
+
+  --main-font: "AdigianaUI"
 }
 
 body{
