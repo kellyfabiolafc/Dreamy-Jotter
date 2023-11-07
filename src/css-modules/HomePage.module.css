@@ -1,0 +1,48 @@
+@import "/src/index.css";
+
+.title{
+    color: var(--first-color-dark);
+    text-align: center;
+    font-weight: 400;
+font-size: 45px;
+line-height: 58px;
+    font-family: var(--main-font);
+}
+.btn-login{
+width: 151px;
+height: 45px;
+border: none;
+background: #CF8193;
+border-radius: 20px;
+color: var(--text-color-light);
+}
+.btn-sign{
+box-sizing: border-box;
+width: 151px;
+height: 45px;
+border: 1px solid #CF8193;
+border-radius: 20px;
+background-color: transparent;
+color: var(--text-color);
+}
+.logo{
+object-fit: cover;
+max-width: 226px;
+height: 222px;
+margin: 50px;
+}
+.container-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-around;
+}
+.container-home{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
