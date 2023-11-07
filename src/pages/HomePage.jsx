@@ -1,12 +1,16 @@
-
+import style from "../css-modules/HomePage.module.css";
+import iconoDJ from "../assets/dreamyJ-icon-nav.png"
  function HomePage() {
     return (
-      <>
-        <h1>Dreamy Jotter</h1>
-        <img src="ruta_de_tu_imagen.jpg" alt="Imagen" />
-        <button>Login</button>
-        <button>Sign Up</button>
-      </>
+      <div className={style["container-home"]}>
+        <h1 className={style.title} >Dreamy Jotter</h1>
+        <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
+        <div className={style["container-buttons"]}>
+        <button className={style["btn-login"]}>Login</button>
+        <button className={style["btn-sign"]}>Sign Up</button>
+        </div>
+        
+      </div>
     )
   }
   
