@@ -1,5 +1,19 @@
 @import "/src/index.css";
-
+.container-home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: aliceblue;
+  max-width: 400px;
+  max-height: 100vh;
+}
+.logo {
+  object-fit: cover;
+  max-width: 400px;
+  height: 300px;
+}
 .title {
   color: var(--first-color-dark);
   text-align: center;
@@ -8,40 +22,44 @@
   line-height: 58px;
   font-family: var(--main-font);
 }
-.btn-login {
-  width: 151px;
-  height: 45px;
+.conteiner-btn-google{
+  display: flex;
+  justify-content: flex-start;
+}
+.btn-google{
+   display: flex;
+   align-items: center; 
+   padding: 8px 12px;
+   width: 314px;
+   height: 52px;
+   border-radius: 20px;
+
+}
+.btn{
   border: none;
-  background: #cf8193;
+  width: 314px;
+  height: 52px;
+  background: var(--secondary-color);
   border-radius: 20px;
   color: var(--text-color-light);
+  font-size: 12px;
 }
-.btn-sign {
-  box-sizing: border-box;
-  width: 151px;
-  height: 45px;
-  border: 1px solid #cf8193;
+.btn-light{
+  width: 314px;
+  height: 52px;
   border-radius: 20px;
   background-color: transparent;
   color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 12px;
 }
-.logo {
-  object-fit: cover;
-  max-width: 226px;
-  height: 222px;
-  margin: 50px;
-}
+
 .container-buttons {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: end;
   justify-content: space-around;
+  gap: 18px;
 }
-.container-home {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+
