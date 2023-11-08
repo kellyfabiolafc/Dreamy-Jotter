@@ -1,7 +1,7 @@
-import style from "../css-modules/HomePage.module.css";
+import style from "../css-modules/LoginPage.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import { Link } from "react-router-dom";
-function HomePage() {
+function LoginPage() {
   return (
     <div className={style.homeContainer}>
     <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
@@ -39,4 +39,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default LoginPage;
