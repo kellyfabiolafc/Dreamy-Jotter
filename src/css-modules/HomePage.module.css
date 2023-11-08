@@ -1,14 +1,15 @@
 @import "/src/index.css";
 .homeContainer {
-  /* Estilos para el contenedor principal */
-  /* background-color: goldenrod; */
+
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 20px 10px;
+  padding: 36px;
   max-width: 400px;
   height: fit-content;
+  border-radius:  10px;
 }
+
 *{
   font-family: var(--body-font);
   font-size: 13.5px;
@@ -27,14 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.googleButton {
-  background-color: transparent;
-  /* Estilos para el botón de Google */
-  width: 229px; /* Ancho de 200 píxeles para el campo de correo electrónico */
-  height: 42px; /* Altura de 30 píxeles para el campo de correo electrónico */
-  border-radius: 12px;
+  width: 100%;
 }
 
 .googleButtonContent {
@@ -43,30 +37,40 @@
   align-items: center;
   
 }
+.googleButton {
+  background-color: transparent;
+  /* Estilos para el botón de Google */
+  width: 90%; 
+  height: 42px; 
+  border-radius: 12px;
+}
+
 
 .emailInput {
   /* Estilos para el campo de correo electrónico */
-  width: 217px; /* Ancho de 200 píxeles para el campo de correo electrónico */
-  height: 42px; /* Altura de 30 píxeles para el campo de correo electrónico */
-  padding-left: 12px;
+  width: 90%; 
+  height: 42px; 
   border-radius: 12px;
   background-color: transparent;
 }
 
 .passwordInput {
   /* Estilos para el campo de contraseña */
-  width: 217px; /* Ancho de 200 píxeles para el campo de correo electrónico */
-  height: 42px; /* Altura de 30 píxeles para el campo de correo electrónico */
-  padding-left: 12px;
+  width: 90%; 
+  height: 42px; 
   border-radius: 12px;
   background-color: transparent;
 }
 
+input::placeholder {
+  text-indent: 12px; 
+}
+
 .loginButton {
   /* Estilos para el botón de inicio de sesión */
-  padding-left: 12px;
-  width: 229px; /* Ancho de 200 píxeles para el campo de correo electrónico */
-  height: 42px; /* Altura de 30 píxeles para el campo de correo electrónico */
+ 
+  width: 90%; 
+  height: 42px; 
   border-radius: 12px;
   background-color: var(--secondary-color);
   border:  none;
@@ -75,6 +79,8 @@
 .additionalOptions{
   display: flex;
   flex-direction:column ;
+  padding: 0px 20px;
+  text-align: center;
 }
 .forgotPasswordLink,.registerLink {
   color: var(--optional-color);/* Cambiar el color del enlace de "Recupérala" a azul */
@@ -83,8 +89,8 @@
  
 
 @media  (min-width: 763px) {
-  /* Estilos que se aplicarán cuando la altura de la ventana sea 768 píxeles o más */
-  /* Puedes añadir tus estilos aquí */
+  /* Estilos que se aplicarán cuando la altura de la ventana sea 763 píxeles o más */
+  
 body{
   background-image: url("/src/assets/Green\ Watercolor\ Mountains\ Desktop\ Wallpaper\ \(4\).png");
 }

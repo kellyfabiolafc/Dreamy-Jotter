@@ -33,9 +33,8 @@ function HomePage() {
       <span>Did you forget your password ? <span className={style.forgotPasswordLink}>Get it back</span></span>
       <span>You do not have an account? <span className={style.registerLink}>Sign up</span></span>
     </div>
-    
+    </div>
    
-  </div>
   
   );
 }
