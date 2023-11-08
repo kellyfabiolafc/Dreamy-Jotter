@@ -1,12 +1,13 @@
-import "./App.css";
-import  HomePage  from "./pages/HomePage.jsx";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
+import  LoginPage  from "./pages/LoginPage.jsx";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import Loader from "./components/Loader.jsx"
 function App() {
   return (
     <Router>
+       <Loader/> {/* Añade el componente de carga aquí */}
       <Routes>
-        <Route  path="/" element={<HomePage/>}/>    
+        <Route  path="/" element={<LoginPage/>}/>    
       </Routes>
     </Router>
   )
