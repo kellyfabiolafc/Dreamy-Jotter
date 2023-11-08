@@ -1,7 +1,7 @@
 
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
-    <div>LoginPage</div>
+    <div>RegisterPage</div>
   )
 }
