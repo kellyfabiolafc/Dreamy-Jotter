@@ -28,12 +28,24 @@ html {
 
 
   --main-font: "AdigianaUI"
+
+  --mb-2: 1rem;
 }
 
 body{
-  background-image: url("/src/assets/Green\ Watercolor\ Mountains\ Desktop\ Wallpaper\ \(4\).png");
+ background-color: var(--first-color);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: var(--body-font);
+ 
 }
+
 #root{
   width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

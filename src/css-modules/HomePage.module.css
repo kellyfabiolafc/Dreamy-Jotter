@@ -1,47 +1,101 @@
 @import "/src/index.css";
+.homeContainer {
 
-.title {
-  color: var(--first-color-dark);
-  text-align: center;
-  font-weight: 400;
-  font-size: 45px;
-  line-height: 58px;
-  font-family: var(--main-font);
-}
-.btn-login {
-  width: 151px;
-  height: 45px;
-  border: none;
-  background: #cf8193;
-  border-radius: 20px;
-  color: var(--text-color-light);
-}
-.btn-sign {
-  box-sizing: border-box;
-  width: 151px;
-  height: 45px;
-  border: 1px solid #cf8193;
-  border-radius: 20px;
-  background-color: transparent;
-  color: var(--text-color);
-}
-.logo {
-  object-fit: cover;
-  max-width: 226px;
-  height: 222px;
-  margin: 50px;
-}
-.container-buttons {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-  justify-content: space-around;
-}
-.container-home {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 15px;
+  padding: 36px;
+  max-width: 400px;
+  height: fit-content;
+  border-radius:  10px;
+}
+
+*{
+  font-family: var(--body-font);
+  font-size: 13.5px;
+  border-color: var(--optional-color);
+}
+.logo {
+  /* Estilos para el logo */
+  max-width: 300px;
+  object-fit: cover;
+
+}
+
+.buttonContainer {
+
+  /* Estilos para el contenedor de botones */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.googleButtonContent {
+  /* Estilos para el contenido del botón de Google */
+  display: flex;
   align-items: center;
+  
+}
+.googleButton {
+  background-color: transparent;
+  /* Estilos para el botón de Google */
+  width: 90%; 
+  height: 42px; 
+  border-radius: 12px;
+}
+
+
+.emailInput {
+  /* Estilos para el campo de correo electrónico */
+  width: 90%; 
+  height: 42px; 
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.passwordInput {
+  /* Estilos para el campo de contraseña */
+  width: 90%; 
+  height: 42px; 
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+input::placeholder {
+  text-indent: 12px; 
+}
+
+.loginButton {
+  /* Estilos para el botón de inicio de sesión */
+ 
+  width: 90%; 
+  height: 42px; 
+  border-radius: 12px;
+  background-color: var(--secondary-color);
+  border:  none;
+
+}
+.additionalOptions{
+  display: flex;
+  flex-direction:column ;
+  padding: 0px 20px;
+  text-align: center;
+}
+.forgotPasswordLink,.registerLink {
+  color: var(--optional-color);/* Cambiar el color del enlace de "Recupérala" a azul */
+}
+
+ 
+
+@media  (min-width: 763px) {
+  /* Estilos que se aplicarán cuando la altura de la ventana sea 763 píxeles o más */
+  
+body{
+  background-image: url("/src/assets/Green\ Watercolor\ Mountains\ Desktop\ Wallpaper\ \(4\).png");
+}
+.homeContainer {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
 }
