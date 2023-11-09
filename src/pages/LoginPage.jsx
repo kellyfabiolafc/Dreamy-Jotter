@@ -3,14 +3,28 @@ import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import Button from "../components/Button/Button";
 import Input from "../components/Button/Input";
+ import signInWithGoogle from "../services/firebase"
+
+// Ahora puedes acceder a los servicios de Firebase utilizando las referencias en el objeto `firebase`
+
+
 
 function LoginPage() {
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      await signInWithGoogle(); // Llama a la función signInWithGoogle
+    } catch (error) {
+      console.error("Error al autenticar con Google:", error);
+    }
+  };
 
   return (
     <div className={style.homeContainer}>
       <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
       <form className={style.buttonContainer}>
-        <button className={css.universalInput}>
+        <button   type="button" onClick={handleGoogleSignIn} className={css.universalInput}>
           <div className={style.googleButtonContent}>
             <i
               className="bx bxl-google"

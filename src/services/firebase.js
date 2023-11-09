@@ -1,33 +1,26 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import {getAuth} from "firebase/auth";
-import {getFirestore} from "firebase/firestore"
-import { getStorage } from '@firebase/storage';
-
-import dotenv from 'dotenv';
-dotenv.config();
+import { getAuth,GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  apiKey: "AIzaSyAiWzsjZnrCoZCglGecUoho2-DXLOs8ALM",
+  authDomain: "dreamy-jotter.firebaseapp.com",
+  databaseURL: "https://dreamy-jotter-default-rtdb.firebaseio.com",
+  projectId: "dreamy-jotter",
+  storageBucket: "dreamy-jotter.appspot.com",
+  messagingSenderId: "33778266706",
+  appId: "1:33778266706:web:02367ad62446f920e7e58b",
+  measurementId: "G-8CNXJMHLGH"
 };
 
-export const initFirebase = () => {
-  const app = initializeApp(firebaseConfig);
-  // const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app, process.env.REACT_APP_STORAGE_BUCKET);
-  return {
-    app,
-    auth,
-    db,
-    storage,
-  };
-}
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider);
+};
+export default signInWithGoogle;
