@@ -1,11 +1,12 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 @font-face {
   font-family: 'AdigianaUI';
   src: url('../src/fonts/AdigianaUI.ttf') format('opentype');
 }
 
-*{
+* {
   margin: 0 auto;
   padding: 0;
 }
@@ -14,9 +15,9 @@ html {
   scroll-behavior: smooth;
 }
 
-:root{
- 
-  --first-color:#FDF5D8;
+:root {
+
+  --first-color: #FDF5D8;
   --first-color-dark: #CF8193;
   --first-color-light: #F3C2D0;
   --secondary-color: #FCE64D;
@@ -29,25 +30,25 @@ html {
 
   --main-font: "AdigianaUI"
 
-  --mb-2: 1rem;
+    --mb-2: 1rem;
 }
 
-body{
- background-color: var(--first-color);
+body {
+  background-color: var(--first-color);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
   font-family: var(--body-font);
- 
+
 }
 
-#root{
+#root {
   width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
