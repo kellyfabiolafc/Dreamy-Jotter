@@ -37,45 +37,7 @@
   align-items: center;
   
 }
-.googleButton {
-  background-color: transparent;
-  /* Estilos para el botón de Google */
-  width: 90%; 
-  height: 42px; 
-  border-radius: 12px;
-}
 
-
-.emailInput {
-  /* Estilos para el campo de correo electrónico */
-  width: 90%; 
-  height: 42px; 
-  border-radius: 12px;
-  background-color: transparent;
-}
-
-.passwordInput {
-  /* Estilos para el campo de contraseña */
-  width: 90%; 
-  height: 42px; 
-  border-radius: 12px;
-  background-color: transparent;
-}
-
-input::placeholder {
-  text-indent: 12px; 
-}
-
-.loginButton {
-  /* Estilos para el botón de inicio de sesión */
- 
-  width: 90%; 
-  height: 42px; 
-  border-radius: 12px;
-  background-color: var(--secondary-color);
-  border:  none;
-
-}
 .additionalOptions{
   display: flex;
   flex-direction:column ;

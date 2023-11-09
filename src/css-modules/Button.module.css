@@ -1,0 +1,22 @@
+@import "../index.css";
+.universalButton {
+  /* Estilos para el botón de inicio de sesión */
+
+  width: 90%;
+  height: 42px;
+  border-radius: 12px;
+  background-color: var(--secondary-color);
+  border: none;
+}
+
+.universalInput {
+  /* Estilos para el campo de correo electrónico */
+  width: 90%;
+  height: 42px;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+input::placeholder {
+  text-indent: 12px;
+}

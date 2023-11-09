@@ -1,12 +1,15 @@
 import style from "../css-modules/LoginPage.module.css";
+import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
+import Button from "../components/Button/Button";
+import Input from "../components/Button/Input";
 import { Link } from "react-router-dom";
 function LoginPage() {
   return (
     <div className={style.homeContainer}>
     <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
     <form className={style.buttonContainer}>
-      <button className={style.googleButton}>
+      <button className={css.universalInput}>
         <div className={style.googleButtonContent}>
           <i
             className="bx bxl-google"
@@ -24,10 +27,9 @@ function LoginPage() {
       </button>
   
       <span>or</span>
-  
-      <input className={style.emailInput} placeholder="Email" />
-      <input className={style.passwordInput} placeholder="Password" />
-      <button className={style.loginButton}>Login</button>
+   <Input>Email</Input>
+   <Input>Password</Input>
+      <Button>Login</Button>
       </form>
       <div className={style.additionalOptions}>
       <span>Did you forget your password ? <span className={style.forgotPasswordLink}>Get it back</span></span>
