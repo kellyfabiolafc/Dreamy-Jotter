@@ -16,10 +16,6 @@
   background-color: transparent;
 }
 
-input::placeholder {
-  padding-left: 12px;
-}
-
 input {
-    text-indent: 12px;
-  }
+  text-indent: 12px;
+}
