@@ -17,7 +17,6 @@
   width: 100%; /* O ajusta el ancho según tus necesidades */
   max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
 }
-
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 600px) {
   /* Estilos específicos para pantallas más pequeñas */

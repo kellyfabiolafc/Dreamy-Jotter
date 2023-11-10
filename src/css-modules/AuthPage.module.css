@@ -18,7 +18,9 @@
   font-family: var(--body-font);
   font-size: 13.5px;
   border-color: var(--optional-color);
+  color: var(--text-color);
 }
+
 .logo {
   /* Estilos para el logo */
   max-width: 300px;

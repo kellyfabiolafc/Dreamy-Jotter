@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../../css-modules/Header.module.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/dark-logo.png";
 import 'boxicons';
 function Header() {
   return (

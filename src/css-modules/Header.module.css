@@ -1,11 +1,14 @@
 /* Header.module.css */
+@import "/src/index.css";
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: var(--secondary-color);
     color: white;
+    position: sticky;
+    top: 0;
   }
   
   .logoContainer {
@@ -22,21 +25,9 @@
   .title {
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--first-color-dark);
   }
   
-  .logoutButton {
-    background-color: #f00;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .logoutButton svg {
-    margin-right: 8px;
-  }
   
   /* Media query opcional para hacer estilos adicionales en pantallas más grandes */
   @media screen and (min-width: 768px) {

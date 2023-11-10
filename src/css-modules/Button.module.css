@@ -6,6 +6,7 @@
   border-radius: 12px;
   background-color: var(--secondary-color);
   border: none;
+  color: var(text-color);
 }
 
 .universalInput {
@@ -18,4 +19,5 @@
 
 input {
   text-indent: 12px;
+  columns: var(text-color);
 }
