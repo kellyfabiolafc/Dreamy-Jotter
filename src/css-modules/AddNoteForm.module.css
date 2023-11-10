@@ -1,0 +1,25 @@
+/* AddNoteForm.module.css */
+
+.addNoteForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .calendar {
+    max-width: 300px; /* Ajusta según tus necesidades */
+    width: 100%;
+    margin-bottom: 20px;
+  }
+.calendar button {
+    border-radius: 20px;
+}
+  form {
+    gap: 20px;
+    flex-direction: column;
+    display: flex;
+  }
+  /* Otros estilos para el formulario si es necesario */
+
+  
