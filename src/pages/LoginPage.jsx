@@ -5,16 +5,18 @@ import Button from "../components/Button/Button";
 import Input from "../components/Button/Input";
 import  {signInWithGoogle }from "../services/fireBaseConfig";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 // Ahora puedes acceder a los servicios de Firebase utilizando las referencias en el objeto `firebase`
 
 
 
 function LoginPage() {
-
+  const navigate = useNavigate();
   const handleGoogleSignIn = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     try {
       await signInWithGoogle(); // Llama a la función signInWithGoogle
+     navigate("/DashboardPage");
     } catch (error) {
       console.error("Error al autenticar con Google:", error);
     }
