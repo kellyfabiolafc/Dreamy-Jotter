@@ -10,6 +10,9 @@ function App() {
       <Routes>
         <Route  path="/" element={<LoginPage/>}/>    
         <Route  path="/register" element={<RegisterPage/>}/>    
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/edit-note/:id" element={<EditNotePage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />  {/* Nueva ruta */}
       </Routes>
     </Router>
   )
