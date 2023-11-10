@@ -1,7 +1,7 @@
 import style from "../css-modules/AuthPage.module.css";
 import iconoDJ from "../assets/icon-dj.png";
-import Input from "../components/Button/Input";
-import Button from "../components/Button/Button";
+import Input from "../components/formElement/Input";
+import Button from "../components/formElement/Button";
 import { Link } from "react-router-dom";
  function RegisterPage() {
   return (

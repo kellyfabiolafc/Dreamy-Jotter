@@ -1,8 +1,8 @@
 import style from "../css-modules/AuthPage.module.css";
 import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
-import Button from "../components/Button/Button";
-import Input from "../components/Button/Input";
+import Button from "../components/formElement/Button";
+import Input from "../components/formElement/Input";
 import  {signInWithGoogle }from "../services/fireBaseConfig";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ function LoginPage() {
     e.preventDefault(); // Prevent default form submission behavior
     try {
       await signInWithGoogle(); // Llama a la función signInWithGoogle
-     navigate("/DashboardPage");
+     navigate("/dashboard");
     } catch (error) {
       console.error("Error al autenticar con Google:", error);
     }

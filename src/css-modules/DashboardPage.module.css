@@ -1,0 +1,30 @@
+/* DashboardPage.module.css */
+
+/* Estilos para pantalla grande (versión web) */
+.pageContainer {
+  font-family: 'Arial, sans-serif';
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  padding: 20px;
+  box-sizing: border-box; /* Asegura que el relleno y el borde se incluyan en el ancho total */
+}
+
+.mainContent {
+  flex: 1;
+  width: 100%; /* O ajusta el ancho según tus necesidades */
+  max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+}
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  /* Estilos específicos para pantallas más pequeñas */
+  .pageContainer {
+    padding: 10px; /* Ajusta el relleno para pantallas más pequeñas */
+  }
+
+  .mainContent {
+    /* Puedes ajustar o anular estilos para pantallas más pequeñas aquí */
+  }
+}

@@ -1,6 +1,9 @@
 @import "/src/index.css";
 .homeContainer {
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -15,7 +18,9 @@
   font-family: var(--body-font);
   font-size: 13.5px;
   border-color: var(--optional-color);
+  color: var(--text-color);
 }
+
 .logo {
   /* Estilos para el logo */
   max-width: 300px;
