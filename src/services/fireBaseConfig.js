@@ -1,7 +1,12 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyAiWzsjZnrCoZCglGecUoho2-DXLOs8ALM",
   authDomain: "dreamy-jotter.firebaseapp.com",
@@ -21,4 +26,13 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };
-export default signInWithGoogle;
+
+const registerWithEmail = (email, password) => {
+  const auth = getAuth();
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+const signOutUser = () => {
+  return signOut(auth);
+};
+
+export { signInWithGoogle, registerWithEmail, signOutUser };
