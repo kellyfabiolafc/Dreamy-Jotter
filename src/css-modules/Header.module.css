@@ -8,7 +8,18 @@
     color: white;
   }
   
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
   .logo {
+    width: 40px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .title {
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -33,7 +44,7 @@
       padding: 20px;
     }
   
-    .logo {
+    .title {
       font-size: 2rem;
     }
   

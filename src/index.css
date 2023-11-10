@@ -9,6 +9,7 @@
 * {
   margin: 0 auto;
   padding: 0;
+  box-sizing: content-box;
 }
 
 html {
@@ -43,13 +44,6 @@ body {
 
 }
 
-#root {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 button {
   cursor: pointer;
