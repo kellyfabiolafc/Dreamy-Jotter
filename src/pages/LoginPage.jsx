@@ -3,7 +3,7 @@ import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import Button from "../components/Button/Button";
 import Input from "../components/Button/Input";
-import signInWithGoogle from "../services/fireBaseConfig";
+import  {signInWithGoogle }from "../services/fireBaseConfig";
 import { Link } from "react-router-dom";
 // Ahora puedes acceder a los servicios de Firebase utilizando las referencias en el objeto `firebase`
 
