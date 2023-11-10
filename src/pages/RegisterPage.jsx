@@ -2,6 +2,7 @@ import style from "../css-modules/AuthPage.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import Input from "../components/Button/Input";
 import Button from "../components/Button/Button";
+import { Link } from "react-router-dom";
  function RegisterPage() {
   return (
     <div className={style.homeContainer}>
@@ -16,7 +17,7 @@ import Button from "../components/Button/Button";
       <div className={style.additionalOptions}>
         <span>
         Do you already have an account?{" "}
-          <span className={style.forgotPasswordLink}>Enter</span>
+          <Link to={"/"} className={style.forgotPasswordLink}>Enter</Link>
         </span>
         
       </div>
