@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Header from '../components/common/Header'
 function DashboardPage() {
   return (
-    <div>DashboardPage</div>
+    <div>
+      <Header/>
+    </div>
   )
 }
 
-export default DashboardPage
+export default DashboardPage;

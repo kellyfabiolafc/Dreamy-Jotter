@@ -1,0 +1,44 @@
+/* Header.module.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .logoutButton {
+    background-color: #f00;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutButton svg {
+    margin-right: 8px;
+  }
+  
+  /* Media query opcional para hacer estilos adicionales en pantallas más grandes */
+  @media screen and (min-width: 768px) {
+    .header {
+      padding: 20px;
+    }
+  
+    .logo {
+      font-size: 2rem;
+    }
+  
+    .logoutButton {
+      font-size: 1rem;
+    }
+  }
+  

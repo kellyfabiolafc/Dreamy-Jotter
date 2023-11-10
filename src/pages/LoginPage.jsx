@@ -16,7 +16,7 @@ function LoginPage() {
     e.preventDefault(); // Prevent default form submission behavior
     try {
       await signInWithGoogle(); // Llama a la función signInWithGoogle
-     navigate("/DashboardPage");
+     navigate("/dashboard");
     } catch (error) {
       console.error("Error al autenticar con Google:", error);
     }
