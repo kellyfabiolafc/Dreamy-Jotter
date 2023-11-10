@@ -3,8 +3,8 @@ import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import Button from "../components/Button/Button";
 import Input from "../components/Button/Input";
- import signInWithGoogle from "../services/firebase"
-
+import signInWithGoogle from "../services/firebase";
+import { Link } from "react-router-dom";
 // Ahora puedes acceder a los servicios de Firebase utilizando las referencias en el objeto `firebase`
 
 
@@ -50,11 +50,11 @@ function LoginPage() {
       <div className={style.additionalOptions}>
         <span>
           Did you forget your password ?{" "}
-          <span className={style.forgotPasswordLink}>Get it back</span>
+          <Link to={"/pass_recover"} className={style.forgotPasswordLink}>Get it back</Link>
         </span>
         <span>
           You do not have an account?{" "}
-          <span className={style.registerLink}>Sign up</span>
+         <Link to={"/register"} className={style.registerLink}>Sign up</Link>
         </span>
       </div>
     </div>
