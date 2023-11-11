@@ -52,7 +52,7 @@ function LoginPage() {
       <div className={style.additionalOptions}>
         <span>
           Did you forget your password ?{" "}
-          <Link to={"/pass_recover"} className={style.forgotPasswordLink}>Get it back</Link>
+          <Link to={"/forgot-password"} className={style.forgotPasswordLink}>Get it back</Link>
         </span>
         <span>
           You do not have an account?{" "}
