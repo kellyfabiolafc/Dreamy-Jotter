@@ -2,8 +2,8 @@
 
 /* Estilos para pantalla grande (versión web) */
 .pageContainer {
-  font-family: 'Arial, sans-serif';
-  background-color: #f4f4f4;
+  font-family: "Arial, sans-serif";
+  background-color: var( --first-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
     padding: 10px; /* Ajusta el relleno para pantallas más pequeñas */
   }
 
-  .mainContent {
+  /* .mainContent {
     /* Puedes ajustar o anular estilos para pantallas más pequeñas aquí */
-  }
+  /* } */
 }
