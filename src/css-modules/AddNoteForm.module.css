@@ -8,13 +8,14 @@
   }
   
   .calendar {
-    max-width: 300px; /* Ajusta según tus necesidades */
+    max-width: 400px; /* Ajusta según tus necesidades */
     width: 100%;
     margin-bottom: 20px;
+    border:  none;
+    box-sizing: border-box;
+    padding: 20px;
   }
-.calendar button {
-    border-radius: 20px;
-}
+ 
   form {
     gap: 20px;
     flex-direction: column;
@@ -22,4 +23,7 @@
   }
   /* Otros estilos para el formulario si es necesario */
 
-  
+  /* TuArchivoDeEstilos.module.css */
+
+/* Estilos para el contenedor principal */
+
