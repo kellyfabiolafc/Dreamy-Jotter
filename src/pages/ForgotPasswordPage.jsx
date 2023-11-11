@@ -19,7 +19,7 @@ function ForgotPasswordPage() {
   return (
     <div className={style.homeContainer}>
       <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
-      <h2>Account Recovery</h2>
+      <h2 style={{fontSize:"19.5px"}}>Account Recovery</h2>
       <p className={style.introText}>
       To reset your password, enter the email address you use to log in.
       </p>
