@@ -9,8 +9,8 @@ function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [resetLinkSent, setResetLinkSent] = useState(false);
 
-  const handleForgotPassword = () => {
-    // Logic to send a password reset request to the server
+  const handleForgotPassword = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior  // Logic to send a password reset request to the server
     // You might use a library like axios to make an HTTP request here
     // Assuming the request was successful and now we're displaying the success message
     setResetLinkSent(true);
