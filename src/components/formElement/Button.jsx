@@ -1,8 +1,8 @@
 import React from 'react';
 import style from "../../css-modules/Button.module.css";
-function Button({children}) {
+function Button({children,onClick}) {
   return (
-    <button className={style["universalButton"]}>{children}</button>
+    <button onClick={onClick}  className={style["universalButton"]}>{children}</button>
   )
 }
 
