@@ -16,6 +16,7 @@ function MyRoutes() {
         <Route path="/dashboard" element={ <ProtectRoute><DashboardPage /></ProtectRoute>} />
         <Route path="/edit-note/:id" element={<EditNotePage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />  {/* Nueva ruta */}
+        <Route path="*" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   )
