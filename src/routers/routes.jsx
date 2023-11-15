@@ -16,7 +16,18 @@ function MyRoutes() {
         <Route path="/dashboard" element={ <ProtectRoute><DashboardPage /></ProtectRoute>} />
         <Route path="/edit-note/:id" element={<EditNotePage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />  {/* Nueva ruta */}
-        <Route path="*" element={<LoginPage />} />
+        <Route
+          path="*"
+          element={
+            user ? (
+              // Si el usuario está autenticado, redirige al dashboard
+              <Navigate to="/dashboard" />
+            ) : (
+              // Si el usuario no está autenticado, redirige al login
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
     </BrowserRouter>
   )
