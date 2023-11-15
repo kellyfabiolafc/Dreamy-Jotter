@@ -3,24 +3,28 @@ import css from "../css-modules/Button.module.css";
 import iconoDJ from "../assets/icon-dj.png";
 import Button from "../components/formElement/Button";
 import Input from "../components/formElement/Input";
-import  {signInWithGoogle }from "../services/fireBaseConfig";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 // Ahora puedes acceder a los servicios de Firebase utilizando las referencias en el objeto `firebase`
 
-
+import { UserAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 function LoginPage() {
+  const {googleSignIn,user}= UserAuth();
   const navigate = useNavigate();
   const handleGoogleSignIn = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     try {
-      await signInWithGoogle(); // Llama a la función signInWithGoogle
+      await googleSignIn(); // Llama a la función signInWithGoogle
      navigate("/dashboard");
     } catch (error) {
       console.error("Error al autenticar con Google:", error);
     }
   };
+  useEffect(()=>{
+if(user!=null){navigate("/")}
+  },[user])
 
   return (
     <div className={style.homeContainer}>
