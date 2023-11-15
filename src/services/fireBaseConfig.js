@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+ const auth = getAuth(app);
 
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -35,4 +35,4 @@ const signOutUser = () => {
   return signOut(auth);
 };
 
-export { signInWithGoogle, registerWithEmail, signOutUser };
+export { signInWithGoogle, registerWithEmail, signOutUser , auth };
