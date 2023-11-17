@@ -18,6 +18,7 @@ import { useState,useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 function MyRoutes() {
   const { user } = UserAuth();
+  //Cuando la aplicación comienza a cargar (por ejemplo, al iniciar la aplicación o al cambiar de ruta),se establece loading en true.
   const [loading, setLoading] = useState(true); // Estado local para controlar el Loader
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function MyRoutes() {
     // mostrar el loader mientras que el estado sea verdadero , 
     return <Loader />;
   }
+   // Una vez que loading es false, renderiza las rutas principales
   return (
     <BrowserRouter>
       <Routes>
