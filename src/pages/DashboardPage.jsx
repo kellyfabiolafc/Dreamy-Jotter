@@ -7,11 +7,11 @@ function DashboardPage() {
   return (
     <>
       <Header />
-      <div className={styles.pageContainer}>
+      {/* <div className={styles.pageContainer}> */}
         <main className={styles.mainContent}>
           <AddNoteForm />
         </main>
-      </div>
+      {/* </div> */}
     </>
   );
 }

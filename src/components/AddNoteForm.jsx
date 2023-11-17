@@ -1,22 +1,30 @@
-// AddNoteForm.jsx
 import "../index.css";
 import styled from "styled-components";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
+import Button from "./formElement/Button";
+import NoteForm from "./NoteForm";
 // import 'react-calendar/dist/Calendar.css';
 import styles from "../css-modules/AddNoteForm.module.css";
 
 const AddNoteForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showAddNoteForm, setShowAddNoteForm] = useState(false);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     // Aquí podrías realizar otras acciones cuando cambie la fecha
+    // Por ejemplo, podrías verificar si hay notas para la nueva fecha y ajustar el estado de showAddNoteForm en consecuencia
+    // setShowAddNoteForm(verificarSiHayNotasParaFecha(date));
   };
 
   const handleAddNote = (noteData) => {
     // Aquí podrías enviar los datos de la nota a Firebase u otro servicio
     console.log("Añadir nota para la fecha:", selectedDate, "Datos:", noteData);
+  };
+
+  const showAddNoteFormHandler = () => {
+    setShowAddNoteForm(true);
   };
 
   return (
@@ -29,16 +37,22 @@ const AddNoteForm = () => {
         />
       </CalendarContainer>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleAddNote();
-        }}
-      >
-       
-        <textarea placeholder="¿Qué historia quieres contar en Dreamy Jotter hoy?" />
-        <button type="submit">Agregar Nota</button>
-      </form>
+      {showAddNoteForm && (
+        <NoteForm
+          onSubmit={() => {
+            handleAddNote();
+            setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
+          }}
+          onCancel={() => setShowAddNoteForm(false)}
+        />
+      )}
+
+      {!showAddNoteForm && (
+        <div className={styles.containerAlternative}>
+          <p>No notes for today.</p>
+          <Button onClick={showAddNoteFormHandler}>Add a note</Button>
+        </div>
+      )}
     </div>
   );
 };
@@ -65,10 +79,10 @@ const CalendarContainer = styled.div`
       flex-grow: 0.333;
     }
   }
-.react-calendar{
-background-color :white;
-border-radius:10px;
-}
+  .react-calendar {
+    background-color: white;
+    border-radius: 10px;
+  }
   /* ~~~ label styles ~~~ */
   .react-calendar__month-view__weekdays {
     text-align: center;
@@ -87,7 +101,7 @@ border-radius:10px;
     }
 
     &:active {
-      background-color:var(--first-color-dark);
+      background-color: var(--first-color-dark);
     }
   }
 
@@ -103,34 +117,34 @@ border-radius:10px;
 
     .react-calendar__tile--range {
       box-shadow: 0 0 4px 1px black;
-      background-color:var(--first-color)
+      background-color: var(--first-color);
     }
   }
 
   .react-calendar__year-view {
     .react-calendar__year-view__months {
-      display: grid !important;;
-      flex: initial !important; 
+      display: grid !important;
+      flex: initial !important;
       grid-template-columns: repeat(4, 1fr);
       gap: 2px;
       flex-wrap: nowrap !important;
     }
   }
-.react-calendar__century-view{
-  .react-calendar__century-view__decades{
-    display: grid !important;;
-      flex: initial !important; 
+  .react-calendar__century-view {
+    .react-calendar__century-view__decades {
+      display: grid !important;
+      flex: initial !important;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px; 
+      gap: 2px;
       flex-wrap: nowrap !important;
+    }
   }
-}
-  .react-calendar__decade-view{
-    .react-calendar__decade-view__years{
-        display: grid !important;;
-      flex: initial !important; 
+  .react-calendar__decade-view {
+    .react-calendar__decade-view__years {
+      display: grid !important;
+      flex: initial !important;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px; 
+      gap: 2px;
       flex-wrap: nowrap !important;
     }
   }

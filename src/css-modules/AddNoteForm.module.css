@@ -1,29 +1,29 @@
 /* AddNoteForm.module.css */
-
+@import "../index.css";
 .addNoteForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-  }
-  
-  .calendar {
-    max-width: 400px; /* Ajusta según tus necesidades */
-    width: 100%;
-    margin-bottom: 20px;
-    border:  none;
-    box-sizing: border-box;
-    padding: 20px;
-  }
- 
-  form {
-    gap: 20px;
-    flex-direction: column;
-    display: flex;
-  }
-  /* Otros estilos para el formulario si es necesario */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
 
-  /* TuArchivoDeEstilos.module.css */
+.calendar {
+  max-width: 400px; /* Ajusta según tus necesidades */
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.containerAlternative {
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+
+/* Otros estilos para el formulario si es necesario */
+
+/* TuArchivoDeEstilos.module.css */
 
 /* Estilos para el contenedor principal */
-
