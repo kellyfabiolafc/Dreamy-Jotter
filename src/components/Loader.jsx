@@ -5,26 +5,23 @@ const Loader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.addEventListener('load', () => {
+    // Simula una breve demora para propósitos de demostración
+    setTimeout(() => {
       setLoading(false);
-    });
-
-    return () => {
-      window.removeEventListener('load', () => {
-        setLoading(false);
-      });
-    };
+    }, 1000); // Puedes ajustar la duración de la simulación según tus necesidades
   }, []);
 
-  if (loading) {
-    return (
-      <div className={style["container--loader"]}>
+  return (
+    <div className={`${style["container--loader"]} ${loading ? style.visible : style.hidden}`}>
+      {loading ? (
         <div className={style.loader}></div>
-      </div>
-    );
-  }
-
-  return null;
+      ) : (
+        <div className={style.loadedContent}>
+          Carga completa, contenido listo...
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Loader;
