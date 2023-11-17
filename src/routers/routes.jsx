@@ -21,14 +21,14 @@ function MyRoutes() {
   const [loading, setLoading] = useState(true); // Estado local para controlar el Loader
 
   useEffect(() => {
-    // Simula una breve demora para propósitos de demostración
+    // Simulamos una breve demora para propósitos de demostración sin load 
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // Puedes ajustar la duración de la simulación según tus necesidades
+    }, 1000); 
   }, []);
 
   if (loading) {
-    // Muestra el Loader mientras se carga la página
+    // mostrar el loader mientras que el estado sea verdadero , 
     return <Loader />;
   }
   return (

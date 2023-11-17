@@ -5,10 +5,10 @@ const Loader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simula una breve demora para propósitos de demostración
+  
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // Puedes ajustar la duración de la simulación según tus necesidades
+    }, 1000); 
   }, []);
 
   return (
