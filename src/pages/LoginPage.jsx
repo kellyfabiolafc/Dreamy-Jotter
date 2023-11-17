@@ -23,7 +23,7 @@ function LoginPage() {
     }
   };
   useEffect(()=>{
-if(user!=null){navigate("/")}
+if(user!=null){navigate("/dashboard")}
   },[user])
 
   return (
