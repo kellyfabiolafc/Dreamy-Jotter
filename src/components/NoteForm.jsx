@@ -5,7 +5,7 @@ import styles from "../css-modules/NoteForm.module.css";
 
 const NoteForm = ({ onSubmit, onCancel }) => {
   return (
-    <div>
+    <div className={styles.overlayBackground}>
       <div className={`${styles.overlayForm} formNote`}></div>
       <form
         className={styles.overlayForm}
