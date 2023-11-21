@@ -3,38 +3,59 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import Button from "./formElement/Button";
+import { useEffect } from "react";
 import NoteForm from "./NoteForm";
 import NoteList from "./NoteList";
-import { createNote } from "../services/fireBaseConfig";
+import { createNote, getNotesByDate } from "../services/fireBaseConfig";
 // import 'react-calendar/dist/Calendar.css';
 import styles from "../css-modules/AddNoteForm.module.css";
 import { UserAuth } from "../context/AuthContext";
 const AddNoteForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
-  const { user } =UserAuth(); // Obtener el usuario desde el contexto
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    // Aquí podrías realizar otras acciones cuando cambie la fecha
-    // Por ejemplo, podrías verificar si hay notas para la nueva fecha y ajustar el estado de showAddNoteForm en consecuencia
-    // setShowAddNoteForm(verificarSiHayNotasParaFecha(date));
-  };
+  const [notes, setNotes] = useState([]);
+  const { user } = UserAuth();
 
+  const handleDateChange = async (date) => {
+    console.log('Fecha seleccionada:', date);
+    setSelectedDate(date);
+    const notes = await getNotesByDate(date);
+    console.log('Notas obtenidas:', notes);
+    setNotes(notes);
+  };
+  
+  
   const handleAddNote = async (noteData) => {
     try {
       const noteId = await createNote(selectedDate, noteData, user.uid);
-      console.log('Nota creada');
-      setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
+      console.log('Nota creada con ID:', noteId);
+      setShowAddNoteForm(false);
+      const updatedNotes = await getNotesByDate(selectedDate);
+      console.log('Notas actualizadas:', updatedNotes);
+      setNotes(updatedNotes);
     } catch (error) {
       console.error('Error al agregar la nota:', error);
-      // Manejo de errores, por ejemplo, mostrar un mensaje al usuario
     }
   };
+  
 
   const showAddNoteFormHandler = () => {
     setShowAddNoteForm(true);
   };
 
+  useEffect(() => {
+    const loadNotes = async () => {
+      try {
+        const notes = await getNotesByDate(selectedDate);
+        console.log('Notas cargadas correctamente:', notes);
+        setNotes(notes);
+      } catch (error) {
+        console.error('Error al cargar notas:', error);
+      }
+    };
+  
+    loadNotes();
+  }, [selectedDate]);
   return (
     <div className={styles.addNoteForm}>
       <CalendarContainer>
@@ -55,10 +76,17 @@ const AddNoteForm = () => {
         />
       )}
 
-      {!showAddNoteForm && (
+  
+{!showAddNoteForm && (
         <div className={styles.containerAlternative}>
-          <p>No notes for today.</p>
-          <Button onClick={showAddNoteFormHandler}>Add a note</Button>
+          {notes.length > 0 ? (
+            <NoteList notes={notes} />
+          ) : (
+            <>
+              <p>No hay notas para hoy.</p>
+              <Button onClick={showAddNoteFormHandler}>Agregar nota</Button>
+            </>
+          )}
         </div>
       )}
     </div>

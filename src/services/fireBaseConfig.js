@@ -64,9 +64,7 @@ const createNote = async (date,  noteData , user) => {
    
 };
 //------
-
-const getNotesByDate = async (selectedDate) => {
-  // Supongo que 'fecha_creacion' es la propiedad que contiene la fecha en tus documentos
+ const getNotesByDate = async (selectedDate) => {
   const startOfDay = new Date(selectedDate);
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date(selectedDate);
@@ -80,15 +78,17 @@ const getNotesByDate = async (selectedDate) => {
   );
 
   const querySnapshot = await getDocs(q);
-  const notes = [];
+  const notas = [];
 
   querySnapshot.forEach((doc) => {
-    notes.push({ id: doc.id, ...doc.data() });
+    notas.push({ id: doc.id, ...doc.data() });
   });
 
-  console.log(notes);
-  return notes;
+  console.log('Notas obtenidas por fecha:', notas);
+  return notas;
 };
+
+
 
 // Editar una nota existente
  const updateNote = async (noteId, updatedNoteData) => {
