@@ -15,7 +15,7 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   // Estado local para almacenar la información del usuario
   const [user, setUser] = useState({});
-
+  const userId = user.uid;
   // Función para iniciar sesión con Google
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -28,15 +28,25 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
+  // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
   useEffect(() => {
     // Registra un observador en la autenticación para rastrear cambios en el usuario actual
-    const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        // Si hay un usuario autenticado, establece el estado del usuario incluyendo su ID
+        setUser({
+          ...currentUser,
+          uid: currentUser.uid // Añadir el UID directamente al objeto del usuario
+        });
+      } else {
+        // Si no hay usuario autenticado, establece el usuario como vacío
+        setUser({});
+      }
     });
 
     // Limpia el observador cuando el componente se desmonta o cuando cambia la dependencia
     return () => {
-      unsubcribe();
+      unsubscribe();
     };
   }, []); // El efecto se ejecuta solo una vez al montar el componente
 

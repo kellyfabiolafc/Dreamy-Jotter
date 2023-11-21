@@ -4,13 +4,15 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import Button from "./formElement/Button";
 import NoteForm from "./NoteForm";
+import NoteList from "./NoteList";
+import { createNote } from "../services/fireBaseConfig";
 // import 'react-calendar/dist/Calendar.css';
 import styles from "../css-modules/AddNoteForm.module.css";
-
+import { UserAuth } from "../context/AuthContext";
 const AddNoteForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
-
+  const { user } =UserAuth(); // Obtener el usuario desde el contexto
   const handleDateChange = (date) => {
     setSelectedDate(date);
     // Aquí podrías realizar otras acciones cuando cambie la fecha
@@ -18,9 +20,15 @@ const AddNoteForm = () => {
     // setShowAddNoteForm(verificarSiHayNotasParaFecha(date));
   };
 
-  const handleAddNote = (noteData) => {
-    // Aquí podrías enviar los datos de la nota a Firebase u otro servicio
-    console.log("Añadir nota para la fecha:", selectedDate, "Datos:", noteData);
+  const handleAddNote = async (noteData) => {
+    try {
+      const noteId = await createNote(selectedDate, noteData, user.uid);
+      console.log('Nota creada');
+      setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
+    } catch (error) {
+      console.error('Error al agregar la nota:', error);
+      // Manejo de errores, por ejemplo, mostrar un mensaje al usuario
+    }
   };
 
   const showAddNoteFormHandler = () => {
@@ -39,11 +47,11 @@ const AddNoteForm = () => {
 
       {showAddNoteForm && (
         <NoteForm
-          onSubmit={() => {
-            handleAddNote();
-            setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
-          }}
-          onCancel={() => setShowAddNoteForm(false)}
+        onSubmit={(noteData) => {
+          handleAddNote(noteData);
+          setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
+        }}
+        onCancel={() => setShowAddNoteForm(false)}
         />
       )}
 
