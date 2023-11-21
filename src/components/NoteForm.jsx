@@ -20,7 +20,7 @@ const NoteForm = ({ onSubmit, onCancel }) => {
           placeholder="Write your story here."
         />
         <Button type="submit">Add Note</Button>
-        <Button onClick={onCancel}>Cancel</Button>
+        <Button onClick={onCancel} className={"buttonDark"}>Cancel</Button>
       </form>
     </div>
   );
