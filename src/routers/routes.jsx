@@ -36,8 +36,26 @@ function MyRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+      <Route
+          path="/"
+          element={
+            user ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            user ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <RegisterPage />
+            )
+          }
+        />
         <Route
           path="/dashboard"
           element={

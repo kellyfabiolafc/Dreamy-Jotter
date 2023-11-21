@@ -5,7 +5,7 @@ import styles from "../css-modules/NoteForm.module.css";
 
 const NoteForm = ({ onSubmit, onCancel }) => {
   return (
-    <div>
+    <div className={styles.overlayBackground}>
       <div className={`${styles.overlayForm} formNote`}></div>
       <form
         className={styles.overlayForm}
@@ -20,7 +20,7 @@ const NoteForm = ({ onSubmit, onCancel }) => {
           placeholder="Write your story here."
         />
         <Button type="submit">Add Note</Button>
-        <Button onClick={onCancel}>Cancel</Button>
+        <Button onClick={onCancel} className={"buttonDark"}>Cancel</Button>
       </form>
     </div>
   );

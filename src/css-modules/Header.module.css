@@ -1,46 +1,49 @@
 /* Header.module.css */
 @import "/src/index.css";
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: var(--secondary-color);
-    color: white;
-    position: sticky;
-    top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: auto;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--first-color-dark);
+}
+.iconlogOut {
+  color: var(--first-color-dark);
+  background-color:  transparent;
+  border:  none;
+}
+
+/* Media query opcional para hacer estilos adicionales en pantallas más grandes */
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 20px;
   }
-  
-  .logoContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 40px; /* Ajusta el tamaño según tus necesidades */
-    height: auto;
-    margin-right: 10px;
-  }
-  
+
   .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--first-color-dark);
+    font-size: 2rem;
   }
-  
-  
-  /* Media query opcional para hacer estilos adicionales en pantallas más grandes */
-  @media screen and (min-width: 768px) {
-    .header {
-      padding: 20px;
-    }
-  
-    .title {
-      font-size: 2rem;
-    }
-  
-    .logoutButton {
-      font-size: 1rem;
-    }
+
+  .logoutButton {
+    font-size: 1rem;
   }
-  
+}
