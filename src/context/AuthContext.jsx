@@ -5,7 +5,7 @@ import {
   onAuthStateChanged,
   signInWithRedirect,createUserWithEmailAndPassword
 } from "firebase/auth";
-
+import { updateProfile } from "firebase/auth";
 import { auth } from "../services/fireBaseConfig";
 
 // Crea un contexto de autenticación
@@ -27,9 +27,24 @@ const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const registerWithGmail = (username,email, password ) => {
-    return createUserWithEmailAndPassword(auth, username ,email, password);
+  
+  const registerWithGmail = async (username, email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: username });
+      return userCredential.user;
+    } catch (error) {
+      switch (error.code) {
+        case "auth/invalid-email":
+          throw new Error("Correo electrónico inválido.");
+        case "auth/weak-password":
+          throw new Error("Contraseña débil. Debe contener al menos 6 caracteres.");
+        default:
+          throw error;
+      }
+    }
   };
+
   // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
   useEffect(() => {
     // Registra un observador en la autenticación para rastrear cambios en el usuario actual
