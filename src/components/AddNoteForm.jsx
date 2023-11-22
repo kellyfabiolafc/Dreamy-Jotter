@@ -42,7 +42,6 @@ const AddNoteForm = () => {
   const showAddNoteFormHandler = () => {
     setShowAddNoteForm(true);
   };
-
   useEffect(() => {
     const loadNotes = async () => {
       try {
@@ -53,7 +52,7 @@ const AddNoteForm = () => {
         console.error('Error al cargar notas:', error);
       }
     };
-  
+
     loadNotes();
   }, [selectedDate]);
   return (
@@ -80,7 +79,7 @@ const AddNoteForm = () => {
 {!showAddNoteForm && (
         <div className={styles.containerAlternative}>
           {notes.length > 0 ? (
-            <NoteList notes={notes} />
+            <NoteList showAddNoteFormHandler={showAddNoteFormHandler} notes={notes} />
           ) : (
             <>
               <p>No hay notas para hoy.</p>
