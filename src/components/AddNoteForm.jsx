@@ -6,10 +6,10 @@ import Button from "./formElement/Button";
 import { useEffect } from "react";
 import NoteForm from "./NoteForm";
 import NoteList from "./NoteList";
-import { createNote, getNotesByDate } from "../services/fireBaseConfig";
+import { UserAuth } from "../context/AuthContext";
+import { createNote, getNotesByDateAndUser } from "../services/fireBaseConfig";
 // import 'react-calendar/dist/Calendar.css';
 import styles from "../css-modules/AddNoteForm.module.css";
-import { UserAuth } from "../context/AuthContext";
 const AddNoteForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
@@ -19,18 +19,18 @@ const AddNoteForm = () => {
   const handleDateChange = async (date) => {
     console.log('Fecha seleccionada:', date);
     setSelectedDate(date);
-    const notes = await getNotesByDate(date);
+    const notes = await getNotesByDateAndUser(date, user.uid);
     console.log('Notas obtenidas:', notes);
     setNotes(notes);
   };
-  
+
   
   const handleAddNote = async (noteData) => {
     try {
       const noteId = await createNote(selectedDate, noteData, user.uid);
       console.log('Nota creada con ID:', noteId);
       setShowAddNoteForm(false);
-      const updatedNotes = await getNotesByDate(selectedDate);
+      const updatedNotes = await getNotesByDateAndUser(selectedDate);
       console.log('Notas actualizadas:', updatedNotes);
       setNotes(updatedNotes);
     } catch (error) {
@@ -77,17 +77,18 @@ const AddNoteForm = () => {
 
   
 {!showAddNoteForm && (
-        <div className={styles.containerAlternative}>
-          {notes.length > 0 ? (
-            <NoteList showAddNoteFormHandler={showAddNoteFormHandler} notes={notes} />
-          ) : (
-            <>
-              <p>No hay notas para hoy.</p>
-              <Button onClick={showAddNoteFormHandler}>Agregar nota</Button>
-            </>
-          )}
-        </div>
-      )}
+  <div className={styles.containerAlternative}>
+    {notes.length > 0 && (
+      <NoteList showAddNoteFormHandler={showAddNoteFormHandler} notes={notes} />
+    )}
+    {notes.length === 0 && (
+      <div className={styles.noNotesContainer}>
+        <p>No hay notas para hoy.</p>
+        <Button onClick={showAddNoteFormHandler}>Agregar nota</Button>
+      </div>
+    )}
+  </div>
+)}
     </div>
   );
 };

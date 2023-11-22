@@ -64,7 +64,7 @@ const createNote = async (date,  noteData , user) => {
    
 };
 //------
-const getNotesByDate = async (selectedDate) => {
+const getNotesByDateAndUser = async (selectedDate, userId) => {
   const startOfDay = new Date(selectedDate);
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date(selectedDate);
@@ -74,6 +74,7 @@ const getNotesByDate = async (selectedDate) => {
     collection(db, 'notes'),
     where('date', '>=', startOfDay),
     where('date', '<=', endOfDay),
+    where('user', '==', userId), // Agrega esta línea para filtrar por usuario
     orderBy('date', 'desc')
   );
 
@@ -84,9 +85,10 @@ const getNotesByDate = async (selectedDate) => {
     notes.push({ id: doc.id, ...doc.data() });
   });
 
-  console.log('Notas obtenidas por fecha:', notes);
+  console.log('Notas obtenidas por fecha y usuario:', notes);
   return notes;
 };
+
 
 
 
@@ -114,4 +116,4 @@ const getNotesByDate = async (selectedDate) => {
 };
 
 
-export { signInWithGoogle, registerWithEmail , auth , createNote , deleteNote , updateNote , getNotesByDate , };
+export { signInWithGoogle, registerWithEmail , auth , createNote , deleteNote , updateNote , getNotesByDateAndUser , };

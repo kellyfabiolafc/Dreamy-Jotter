@@ -3,7 +3,7 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  signInWithPopup,
+  signInWithRedirect,
 } from "firebase/auth";
 
 import { auth } from "../services/fireBaseConfig";
@@ -15,11 +15,11 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   // Estado local para almacenar la información del usuario
   const [user, setUser] = useState({});
-  const userId = user.uid;
+
   // Función para iniciar sesión con Google
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    return signInWithRedirect(auth, provider);
   };
 
   // Función para cerrar sesión
@@ -28,25 +28,15 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
-  // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
   useEffect(() => {
     // Registra un observador en la autenticación para rastrear cambios en el usuario actual
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        // Si hay un usuario autenticado, establece el estado del usuario incluyendo su ID
-        setUser({
-          ...currentUser,
-          uid: currentUser.uid // Añadir el UID directamente al objeto del usuario
-        });
-      } else {
-        // Si no hay usuario autenticado, establece el usuario como vacío
-        setUser({});
-      }
+    const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
     });
 
     // Limpia el observador cuando el componente se desmonta o cuando cambia la dependencia
     return () => {
-      unsubscribe();
+      unsubcribe();
     };
   }, []); // El efecto se ejecuta solo una vez al montar el componente
 
