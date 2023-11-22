@@ -64,7 +64,7 @@ const createNote = async (date,  noteData , user) => {
    
 };
 //------
- const getNotesByDate = async (selectedDate) => {
+const getNotesByDate = async (selectedDate) => {
   const startOfDay = new Date(selectedDate);
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date(selectedDate);
@@ -72,21 +72,22 @@ const createNote = async (date,  noteData , user) => {
 
   const q = query(
     collection(db, 'notes'),
-    where('fecha_creacion', '>=', startOfDay),
-    where('fecha_creacion', '<=', endOfDay),
-    orderBy('fecha_creacion', 'desc')
+    where('date', '>=', startOfDay),
+    where('date', '<=', endOfDay),
+    orderBy('date', 'desc')
   );
 
   const querySnapshot = await getDocs(q);
-  const notas = [];
+  const notes = [];
 
   querySnapshot.forEach((doc) => {
-    notas.push({ id: doc.id, ...doc.data() });
+    notes.push({ id: doc.id, ...doc.data() });
   });
 
-  console.log('Notas obtenidas por fecha:', notas);
-  return notas;
+  console.log('Notas obtenidas por fecha:', notes);
+  return notes;
 };
+
 
 
 
