@@ -9,9 +9,9 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "create-redirects": "echo /* /index.html 200 > public/_redirects"
-
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
     "boxicons": "^2.1.4",
     "dotenv": "^16.3.1",
     "firebase": "^10.5.2",

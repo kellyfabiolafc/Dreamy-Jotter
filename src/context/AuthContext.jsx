@@ -3,7 +3,7 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  signInWithPopup,
+  signInWithRedirect,
 } from "firebase/auth";
 
 import { auth } from "../services/fireBaseConfig";
@@ -19,7 +19,7 @@ const AuthContextProvider = ({ children }) => {
   // Función para iniciar sesión con Google
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    return signInWithRedirect(auth, provider);
   };
 
   // Función para cerrar sesión

@@ -1,0 +1,49 @@
+.noteListContainer {
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffeded; /* Rosa pastel */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .noteListTitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ff7f50; /* Naranja pastel */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .noteList {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .noteListItem {
+    border: 1px solid #ffb6c1; /* Rosa claro */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff; /* Blanco */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* .addButton {
+    background-color: #007bff;
+    margin-top: 20px;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover {
+    background-color: #0056b3;
+  }
+   */
