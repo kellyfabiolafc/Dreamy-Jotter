@@ -29,10 +29,6 @@ const signInWithGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
-const registerWithEmail = (email, password) => {
-  const auth = getAuth();
-  return createUserWithEmailAndPassword(auth, email, password);
-};
 
 
 // Crear una nueva nota
@@ -116,4 +112,4 @@ const getNotesByDateAndUser = async (selectedDate, userId) => {
 };
 
 
-export { signInWithGoogle, registerWithEmail , auth , createNote , deleteNote , updateNote , getNotesByDateAndUser , };
+export { signInWithGoogle , auth , createNote , deleteNote , updateNote , getNotesByDateAndUser , };

@@ -1,8 +1,8 @@
 
 import style from "../../css-modules/Button.module.css";
-const Input = ({children}) => {
+const Input = ({children , placeholder}) => {
   return (
-    <input className={style["universalInput"]} placeholder={children}/>
+    <input className={style["universalInput"]} placeholder={placeholder}/>
   )
 }
 

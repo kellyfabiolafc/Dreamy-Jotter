@@ -3,7 +3,7 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  signInWithRedirect,
+  signInWithRedirect,createUserWithEmailAndPassword
 } from "firebase/auth";
 
 import { auth } from "../services/fireBaseConfig";
@@ -27,6 +27,9 @@ const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const registerWithGmail = (username,email, password ) => {
+    return createUserWithEmailAndPassword(auth, username ,email, password);
+  };
   // Efecto de efecto secundario que escucha cambios en la autenticación del usuario
   useEffect(() => {
     // Registra un observador en la autenticación para rastrear cambios en el usuario actual
@@ -42,7 +45,7 @@ const AuthContextProvider = ({ children }) => {
 
   // Renderiza el contexto de autenticación y pasa sus valores y funciones como propiedades a los componentes hijos
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider value={{ googleSignIn, logOut, user , registerWithGmail }}>
       {children}
     </AuthContext.Provider>
   );
