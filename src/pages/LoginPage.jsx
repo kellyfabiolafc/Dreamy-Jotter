@@ -48,8 +48,8 @@ if(user!=null){navigate("/dashboard")}
         </button>
 
         <span>or</span>
-        <Input>Email</Input>
-        <Input>Password</Input>
+        <Input placeholder="Email">Email</Input>
+        <Input placeholder="Password">Password</Input>
         <Button>Login</Button>
       </form>
 

@@ -5,35 +5,41 @@ import Button from "../components/formElement/Button";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import ErrorModal from "../components/ErrorModal";
 import validator from "validator";
 function RegisterPage() {
   const { registerWithGmail } = UserAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const isEmailValid = (email) => {
     return validator.isEmail(email);
   };
-  
+
   const handleRegisterWithGmail = async () => {
     try {
       const trimmedEmail = email.trim();
-      console.log('Email:', email);
-      console.log('Trimmed Email:', trimmedEmail);
-  
       if (!isEmailValid(trimmedEmail)) {
         throw new Error("Correo electrónico inválido");
       }
-  
-      console.log('Calling registerWithGmail');
+
       await registerWithGmail(username, trimmedEmail, password);
     } catch (error) {
       console.error('Error al registrar con Gmail:', error);
+
+      // Actualiza el estado para mostrar el modal de error
+      setErrorMessage(error.message);
+      setShowErrorModal(true);
     }
   };
-  
 
+  const handleCloseErrorModal = () => {
+    // Cierra el modal de error al hacer clic en el botón "Close" o "Understood"
+    setShowErrorModal(false);
+  };
   return (
     <div className={style.homeContainer}>
       <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
@@ -75,6 +81,9 @@ function RegisterPage() {
           </Link>
         </span>
       </div>
+      {showErrorModal && (
+        <ErrorModal errorMessage={errorMessage} handleClose={handleCloseErrorModal} />
+      )}
     </div>
   );
 }
