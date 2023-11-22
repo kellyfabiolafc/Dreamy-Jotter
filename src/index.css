@@ -49,13 +49,20 @@ button {
   cursor: pointer;
 }
 .modal{
-  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro con opacidad */
-  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Altura completa de la ventana */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  z-index: 1050;
+  padding: 0 !important; /* Asegúrate de eliminar cualquier relleno */
+  margin: 0 !important; /* Asegúrate de eliminar cualquier margen */
 }
 /* ------------------------------------------- */
 .modal-content {
-  margin-top: 40px;
-  width: 90% !important;
+  margin-top: 50px;
+  max-width: 400px!important;
 }
 .fade {
   transition: opacity .15s linear;

@@ -41,6 +41,7 @@ function RegisterPage() {
     setShowErrorModal(false);
   };
   return (
+    <>
     <div className={style.homeContainer}>
       <img className={style.logo} src={iconoDJ} alt="Dreamy Jotter Logo" />
       <p className={style.introText}>
@@ -81,10 +82,12 @@ function RegisterPage() {
           </Link>
         </span>
       </div>
-      {showErrorModal && (
+     
+    </div>
+    {showErrorModal && (
         <ErrorModal errorMessage={errorMessage} handleClose={handleCloseErrorModal} />
       )}
-    </div>
+    </>
   );
 }
 
