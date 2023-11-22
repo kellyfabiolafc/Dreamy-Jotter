@@ -48,7 +48,10 @@ body {
 button {
   cursor: pointer;
 }
-
+.modal{
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro con opacidad */
+  border-radius: 10px;
+}
 /* ------------------------------------------- */
 .modal-content {
   margin-top: 40px;
@@ -57,11 +60,7 @@ button {
 .fade {
   transition: opacity .15s linear;
 }
-.modal{
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-}
+
 
 .react-calendar {
   width: 350px;
