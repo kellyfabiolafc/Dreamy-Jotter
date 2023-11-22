@@ -45,7 +45,7 @@ const AddNoteForm = () => {
   useEffect(() => {
     const loadNotes = async () => {
       try {
-        const notes = await getNotesByDate(selectedDate);
+        const notes = await getNotesByDateAndUser(selectedDate);
         console.log('Notas cargadas correctamente:', notes);
         setNotes(notes);
       } catch (error) {

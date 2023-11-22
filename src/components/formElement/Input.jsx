@@ -1,8 +1,8 @@
 
 import style from "../../css-modules/Button.module.css";
-const Input = ({children}) => {
+const Input = ({children , placeholder , type ,value , onChange}) => {
   return (
-    <input className={style["universalInput"]} placeholder={children}/>
+    <input  onChange={onChange} value={value} className={style["universalInput"]} placeholder={placeholder} type={type}/>
   )
 }
 
