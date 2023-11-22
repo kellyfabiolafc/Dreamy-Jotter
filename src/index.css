@@ -58,13 +58,9 @@ button {
   transition: opacity .15s linear;
 }
 .modal{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; /* Ancho completo de la ventana */
-  height: 100%; /* Altura completa de la ventana */
-  z-index: 1050; /* Z-index para asegurar que esté sobre otros elementos */
-  
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .react-calendar {
