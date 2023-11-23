@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './formElement/Button';
 import styles from "../css-modules/NoteList.module.css"
 import { UserAuth } from '../context/AuthContext';
+import AddButton from './formElement/AddButton';
 function NoteList({ notes, showAddNoteFormHandler }) {
     const { user } = UserAuth();
   
@@ -20,10 +21,9 @@ const userNotes = notes.filter((note) => note.user === user?.uid);
     };
   
     return (
+      <>
+      <AddButton onClick={showAddNoteFormHandler}/>
       <div className={styles.noteListContainer}>
-        <Button className={styles.addButton} onClick={showAddNoteFormHandler}>
-          Agregar nota
-        </Button>
         <h2 className={styles.noteListTitle}>Lista de Notas</h2>
         <ul className={styles.noteList}>
           {userNotes.map((note) => (
@@ -41,6 +41,7 @@ const userNotes = notes.filter((note) => note.user === user?.uid);
           ))}
         </ul>
       </div>
+      </>
     );
   }
   

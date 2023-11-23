@@ -21,7 +21,7 @@ catch ( error){
     <header className={styles.header}>
     <div className={styles.logoContainer}>
         <img src={logo} alt="Dreamy Jotter Logo" className={styles.logo} />
-        <div className={styles.title}>Dreamy Jotter {user.displayName}</div>
+        <div className={styles.title}>Dreamy Jotter</div>
       </div>
    <button onClick={logOutt} className={styles.iconlogOut}><box-icon  name='log-out'></box-icon></button> 
   </header>

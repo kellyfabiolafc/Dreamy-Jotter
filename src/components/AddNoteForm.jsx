@@ -80,6 +80,7 @@ const AddNoteForm = () => {
   <div className={styles.containerAlternative}>
     {notes.length > 0 && (
       <NoteList showAddNoteFormHandler={showAddNoteFormHandler} notes={notes} />
+      
     )}
     {notes.length === 0 && (
       <div className={styles.noNotesContainer}>
