@@ -61,6 +61,8 @@ const createNote = async (date,  noteData , user) => {
 };
 //------
 const getNotesByDateAndUser = async (selectedDate, userId) => {
+  console.log('Fecha seleccionada:', selectedDate);
+  console.log('ID de usuario:', userId);
   const startOfDay = new Date(selectedDate);
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date(selectedDate);
@@ -84,6 +86,7 @@ const getNotesByDateAndUser = async (selectedDate, userId) => {
   console.log('Notas obtenidas por fecha y usuario:', notes);
   return notes;
 };
+
 
 
 

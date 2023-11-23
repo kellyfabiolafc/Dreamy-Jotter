@@ -10,6 +10,7 @@ import { UserAuth } from "../context/AuthContext";
 import { createNote, getNotesByDateAndUser } from "../services/fireBaseConfig";
 // import 'react-calendar/dist/Calendar.css';
 import styles from "../css-modules/AddNoteForm.module.css";
+
 const AddNoteForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
@@ -24,28 +25,27 @@ const AddNoteForm = () => {
     setNotes(notes);
   };
 
-  
   const handleAddNote = async (noteData) => {
     try {
       const noteId = await createNote(selectedDate, noteData, user.uid);
       console.log('Nota creada con ID:', noteId);
       setShowAddNoteForm(false);
-      const updatedNotes = await getNotesByDateAndUser(selectedDate);
+      const updatedNotes = await getNotesByDateAndUser(selectedDate, user.uid); // Ajuste aquí, pasando user.uid
       console.log('Notas actualizadas:', updatedNotes);
       setNotes(updatedNotes);
     } catch (error) {
       console.error('Error al agregar la nota:', error);
     }
   };
-  
 
   const showAddNoteFormHandler = () => {
     setShowAddNoteForm(true);
   };
+
   useEffect(() => {
     const loadNotes = async () => {
       try {
-        const notes = await getNotesByDateAndUser(selectedDate);
+        const notes = await getNotesByDateAndUser(selectedDate, user.uid); // Ajuste aquí, pasando user.uid
         console.log('Notas cargadas correctamente:', notes);
         setNotes(notes);
       } catch (error) {
@@ -54,7 +54,7 @@ const AddNoteForm = () => {
     };
 
     loadNotes();
-  }, [selectedDate]);
+  }, [selectedDate, user.uid]); // Añade user.uid a las dependencias del efecto
   return (
     <div className={styles.addNoteForm}>
       <CalendarContainer>
