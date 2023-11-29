@@ -10,30 +10,38 @@
   position: sticky;
   top: 0;
   z-index: 100; /* Asegura que esté por encima del contenido */
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Alinea los elementos al inicio */
 }
 
 .logo {
   width: 40px; /* Ajusta el tamaño según tus necesidades */
   height: auto;
-  margin-right: 10px;
+  margin-right: 10px; /* Espacio entre el logo y el título */
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--first-color-dark);
+  margin: 0; /* Asegura que no haya margen entre el título y el logo */
 }
 .iconlogOut {
   color: var(--first-color-dark);
   background-color:  transparent;
   border:  none;
+  cursor: pointer;
 }
-
+.iconlogOut img {
+  width: 32px; /* Ajusta el tamaño según sea necesario */
+  height: 32px; /* Ajusta el tamaño según sea necesario */
+}
 /* Media query opcional para hacer estilos adicionales en pantallas más grandes */
 @media screen and (min-width: 768px) {
   .header {
@@ -44,7 +52,11 @@
     font-size: 2rem;
   }
 
-  .logoutButton {
+  .iconlogOut {
     font-size: 1rem;
+    margin-right:100px ;
+  }
+  .logoContainer{
+margin-left: 100px;
   }
 }
