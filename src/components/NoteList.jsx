@@ -1,24 +1,46 @@
 import React from 'react';
-import Button from './formElement/Button';
+import { updateNote,deleteNote } from '../services/fireBaseConfig';
+import { useState,useEffect } from 'react';
 import styles from "../css-modules/NoteList.module.css"
 import { UserAuth } from '../context/AuthContext';
 import AddButton from './formElement/AddButton';
 function NoteList({ notes, showAddNoteFormHandler }) {
-    const { user } = UserAuth();
-  
-    // Filtra las notas que pertenecen al usuario actual
-// Filtra las notas que pertenecen al usuario actual
-const userNotes = notes.filter((note) => note.user === user?.uid);
+  const { user } = UserAuth();
+  const [userNotes, setUserNotes] = useState([]);
 
-    const handleEditNote = (id) => {
+  useEffect(() => {
+    // Filtra las notas que pertenecen al usuario actual
+    const filteredNotes = notes.filter((note) => note.user === user?.uid);
+    setUserNotes(filteredNotes);
+  }, [notes, user]);
+
+  const handleEditNote = async (id) => {
+    try {
       console.log('Editar nota con ID:', id);
-      // Puedes llamar a una función que maneje la edición de la nota aquí
-    };
-  
-    const handleDeleteNote = (id) => {
+      // Llama a la función para editar la nota
+      await updateNote(id, { /* nuevos datos de la nota */ });
+
+      // Actualiza el estado después de la edición
+      setUserNotes((prevNotes) =>
+        prevNotes.map((note) => (note.id === id ? { ...note, /* nuevos datos */ } : note))
+      );
+    } catch (error) {
+      console.error('Error al editar la nota:', error);
+    }
+  };
+
+  const handleDeleteNote = async (id) => {
+    try {
       console.log('Eliminar nota con ID:', id);
-      // Puedes llamar a una función que maneje la eliminación de la nota aquí
-    };
+      await deleteNote(id);
+
+      // Actualiza el estado después de la eliminación
+      setUserNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+    } catch (error) {
+      console.error('Error al eliminar la nota:', error);
+    }
+  };
+
   
     return (
       <>
