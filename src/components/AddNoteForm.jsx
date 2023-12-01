@@ -72,6 +72,8 @@ const AddNoteForm = () => {
           setShowAddNoteForm(false); // Oculta el formulario después de enviar la nota
         }}
         onCancel={() => setShowAddNoteForm(false)}
+        submitButtonText="Add Note"
+        cancelButtonText="Cancel"
         />
       )}
 
