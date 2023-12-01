@@ -1,12 +1,14 @@
-import React from 'react';
-import { updateNote,deleteNote } from '../services/fireBaseConfig';
-import { useState,useEffect } from 'react';
-import styles from "../css-modules/NoteList.module.css"
+import React, { useState, useEffect } from 'react';
+import NoteForm from './NoteForm';
+import { updateNote, deleteNote } from '../services/fireBaseConfig';
+import styles from "../css-modules/NoteList.module.css";
 import { UserAuth } from '../context/AuthContext';
 import AddButton from './formElement/AddButton';
+
 function NoteList({ notes, showAddNoteFormHandler }) {
   const { user } = UserAuth();
   const [userNotes, setUserNotes] = useState([]);
+  const [editNoteId, setEditNoteId] = useState(null);
 
   useEffect(() => {
     // Filtra las notas que pertenecen al usuario actual
@@ -14,16 +16,28 @@ function NoteList({ notes, showAddNoteFormHandler }) {
     setUserNotes(filteredNotes);
   }, [notes, user]);
 
-  const handleEditNote = async (id) => {
+  const handleEditNote = (id) => {
+    setEditNoteId(id);
+  };
+
+  const handleCancelEdit = () => {
+    setEditNoteId(null);
+  };
+
+  const handleEditFormSubmit = async (editedContent) => {
     try {
-      console.log('Editar nota con ID:', id);
+      console.log('Editar nota con ID:', editNoteId);
+
       // Llama a la función para editar la nota
-      await updateNote(id, { /* nuevos datos de la nota */ });
+      await updateNote(editNoteId, { data: editedContent });
 
       // Actualiza el estado después de la edición
       setUserNotes((prevNotes) =>
-        prevNotes.map((note) => (note.id === id ? { ...note, /* nuevos datos */ } : note))
+        prevNotes.map((note) => (note.id === editNoteId ? { ...note, data: editedContent } : note))
       );
+
+      // Sale del modo de edición
+      setEditNoteId(null);
     } catch (error) {
       console.error('Error al editar la nota:', error);
     }
@@ -41,9 +55,8 @@ function NoteList({ notes, showAddNoteFormHandler }) {
     }
   };
 
-  
-    return (
-      <>
+  return (
+    <>
       <AddButton onClick={showAddNoteFormHandler}/>
       <div className={styles.noteListContainer}>
         <h2 className={styles.noteListTitle}>Lista de Notas</h2>
@@ -56,15 +69,30 @@ function NoteList({ notes, showAddNoteFormHandler }) {
                 <strong>Datos de la nota:</strong> {note.data}
               </div>
               <div>
-                <button onClick={() => handleEditNote(note.id)}>Editar</button>
-                <button onClick={() => handleDeleteNote(note.id)}>Eliminar</button>
+                {editNoteId === note.id ? (
+                  // Renderiza el formulario de edición si estamos editando esta nota
+                  <NoteForm
+                    onSubmit={handleEditFormSubmit}
+                    onCancel={handleCancelEdit}
+                    submitButtonText="Save Note"
+                    cancelButtonText="Cancel"
+                    initialNoteContent={note.data}
+                    
+                  />
+                ) : (
+                  // Renderiza los botones de editar y eliminar si no estamos editando esta nota
+                  <>
+                    <button onClick={() => handleEditNote(note.id)}>Editar</button>
+                    <button onClick={() => handleDeleteNote(note.id)}>Eliminar</button>
+                  </>
+                )}
               </div>
             </li>
           ))}
         </ul>
       </div>
-      </>
-    );
-  }
-  
-  export default NoteList;
+    </>
+  );
+}
+
+export default NoteList;

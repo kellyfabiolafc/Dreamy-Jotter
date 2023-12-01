@@ -1,13 +1,25 @@
-// NoteForm.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./formElement/Button";
 import styles from "../css-modules/NoteForm.module.css";
-import { useState } from "react";
-const NoteForm = ({ onSubmit, onCancel, submitButtonText, cancelButtonText }) => {
-  const [noteContent, setNoteContent] = useState(""); // Estado local para el contenido de la nota
+
+const NoteForm = ({
+  onSubmit,
+  onCancel,
+  submitButtonText,
+  cancelButtonText,
+  initialNoteContent,
+}) => {
+  const [noteContent, setNoteContent] = useState("");
+
+  // useEffect para actualizar el contenido cuando cambia initialNoteContent
+  useEffect(() => {
+    setNoteContent(initialNoteContent);
+  }, [initialNoteContent]);
+
   const handleNoteChange = (event) => {
-    setNoteContent(event.target.value); // Actualizar el estado con el texto ingresado
+    setNoteContent(event.target.value);
   };
+
   return (
     <div className={styles.overlayBackground}>
       <div className={`${styles.overlayForm} formNote`}></div>
@@ -22,14 +34,19 @@ const NoteForm = ({ onSubmit, onCancel, submitButtonText, cancelButtonText }) =>
         <textarea
           className={styles.textTarea}
           placeholder="Write your story here."
-          value={noteContent} // Vincular el valor del textarea al estado noteText
-          onChange={handleNoteChange} // Manejar cambios en el textarea
+          value={noteContent || ""}
+          onChange={handleNoteChange}
         />
-        <Button type="submit">{submitButtonText}</Button>
-        <Button onClick={onCancel} className={"buttonDark"}>{cancelButtonText}</Button>
+        <Button type="submit"  disabled={!noteContent || !noteContent.trim()}>{submitButtonText}</Button>
+        <Button onClick={onCancel} className={"buttonDark"}>
+          {cancelButtonText}
+        </Button>
       </form>
     </div>
   );
 };
 
 export default NoteForm;
+
+
+
