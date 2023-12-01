@@ -17,7 +17,7 @@ const NoteForm = ({
   }, [initialNoteContent]);
 
   const handleNoteChange = (event) => {
-    setNoteContent(event.target.value);
+    setNoteContent(event.target.value);// Actualizar el estado con el texto ingresado
   };
 
   return (
@@ -34,8 +34,8 @@ const NoteForm = ({
         <textarea
           className={styles.textTarea}
           placeholder="Write your story here."
-          value={noteContent || ""}
-          onChange={handleNoteChange}
+          value={noteContent} //  || "" Vincular el valor del textarea al estado noteText
+          onChange={handleNoteChange} // Manejar cambios en el textarea
         />
         <Button type="submit"  disabled={!noteContent || !noteContent.trim()}>{submitButtonText}</Button>
         <Button onClick={onCancel} className={"buttonDark"}>
