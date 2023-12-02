@@ -11,7 +11,6 @@ function NoteList({ notes, showAddNoteFormHandler }) {
   const [editNoteId, setEditNoteId] = useState(null);
 
   useEffect(() => {
-    // Filtra las notas que pertenecen al usuario actual
     const filteredNotes = notes.filter((note) => note.user === user?.uid);
     setUserNotes(filteredNotes);
   }, [notes, user]);

@@ -34,7 +34,7 @@ const NoteForm = ({
         <textarea
           className={styles.textTarea}
           placeholder="Write your story here."
-          value={noteContent} //  || "" Vincular el valor del textarea al estado noteText
+          value={noteContent} //  || ""Vincular el valor del textarea al estado noteText
           onChange={handleNoteChange} // Manejar cambios en el textarea
         />
         <Button type="submit"  disabled={!noteContent || !noteContent.trim()}>{submitButtonText}</Button>
