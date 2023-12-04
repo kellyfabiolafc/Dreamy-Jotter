@@ -1,6 +1,5 @@
 import {
   DashboardPage,
-  EditNotePage,
   ForgotPasswordPage,
   LoginPage,
   RegisterPage,
@@ -64,7 +63,6 @@ function MyRoutes() {
             </ProtectRoute>
           }
         />
-        <Route path="/edit-note/:id" element={<EditNotePage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />{" "}
         {/* Nueva ruta */}
         <Route

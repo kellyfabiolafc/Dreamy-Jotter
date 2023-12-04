@@ -5,8 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore, collection , addDoc ,query ,getDocs ,orderBy,where} from 'firebase/firestore/lite';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection , addDoc ,query ,getDocs , doc ,updateDoc, deleteDoc,orderBy,where} from 'firebase/firestore/lite';
 const firebaseConfig = {
   apiKey: "AIzaSyAiWzsjZnrCoZCglGecUoho2-DXLOs8ALM",
   authDomain: "dreamy-jotter.firebaseapp.com",
@@ -88,14 +87,13 @@ const getNotesByDateAndUser = async (selectedDate, userId) => {
 };
 
 
-
-
-
-
-// Editar una nota existente
- const updateNote = async (noteId, updatedNoteData) => {
+const updateNote = async (noteId, updatedNoteData) => {
   try {
-    await db.collection('notes').doc(noteId).update(updatedNoteData);
+    // Utiliza doc() para obtener una referencia al documento específico
+    const noteRef = doc(db, 'notes', noteId);
+
+    // Utiliza updateDoc() para actualizar el documento con los nuevos datos
+    await updateDoc(noteRef, updatedNoteData);
     console.log('Nota actualizada correctamente');
   } catch (error) {
     console.error('Error al actualizar la nota:', error);
@@ -104,15 +102,17 @@ const getNotesByDateAndUser = async (selectedDate, userId) => {
 };
 
 // Eliminar una nota existente
- const deleteNote = async (noteId) => {
+const deleteNote = async (noteId) => {
   try {
-    await db.collection('notes').doc(noteId).delete();
+    // Utiliza doc() para obtener una referencia al documento específico
+    const noteRef = doc(db, 'notes', noteId);
+
+    // Utiliza deleteDoc() para eliminar el documento
+    await deleteDoc(noteRef);
     console.log('Nota eliminada correctamente');
   } catch (error) {
     console.error('Error al eliminar la nota:', error);
     throw new Error('Error al eliminar la nota');
   }
 };
-
-
-export { signInWithGoogle , auth , createNote , deleteNote , updateNote , getNotesByDateAndUser , };
+export { signInWithGoogle , auth , createNote   , getNotesByDateAndUser , updateNote , deleteNote};
