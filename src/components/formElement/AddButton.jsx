@@ -3,9 +3,9 @@
 import React from 'react';
 import styles from '../../css-modules/AddNoteForm.module.css';
 
-const AddButton = ({ onClick }) => {
+const AddButton = ({ showAddNoteFormHandler }) => {
   return (
-    <button className={styles.addButton} onClick={onClick}>
+    <button className={styles.addButton} onClick={showAddNoteFormHandler}>
       <span className={styles.addIcon}>+</span>
     </button>
   );

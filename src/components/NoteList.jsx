@@ -73,7 +73,7 @@ const handleDeleteNote = async (id) => {
 
   return (
     <>
-      <AddButton onClick={showAddNoteFormHandler}/>
+      <AddButton showAddNoteFormHandler={showAddNoteFormHandler}/>
       <div className={styles.noteListContainer}>
         <h2 className={styles.noteListTitle}>Lista de Notas</h2>
         <ul className={styles.noteList}>
