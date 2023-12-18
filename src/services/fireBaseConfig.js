@@ -115,4 +115,5 @@ const deleteNote = async (noteId) => {
     throw new Error('Error al eliminar la nota');
   }
 };
+
 export { signInWithGoogle , auth , createNote   , getNotesByDateAndUser , updateNote , deleteNote};

@@ -66,7 +66,7 @@ const handleDeleteNote = async (id) => {
     // Actualiza el estado de las notas después de la eliminación
     setUserNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   } catch (error) {
-    // Maneja cualquier error que pueda ocurrir durante la eliminación
+   
     console.error('Error al eliminar la nota:', error);
   }
 };
